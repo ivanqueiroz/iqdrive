@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'IqDriveApp'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+group 'dev.ivanqueiroz.iqdrive'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.api-client:google-api-client:1.23.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    compile 'com.google.apis:google-api-services-drive:v3-rev110-1.23.0'
+    compile 'org.aeonbits.owner:owner:1.0.12'
+    compile 'org.aeonbits.owner:owner-java8:1.0.12'
+    compile 'ch.qos.logback:logback-core:1.2.3'
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'org.slf4j:slf4j-api:1.7.30'
+    compile 'commons-io:commons-io:2.7'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
