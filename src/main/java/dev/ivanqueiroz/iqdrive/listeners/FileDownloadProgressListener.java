@@ -2,18 +2,22 @@ package dev.ivanqueiroz.iqdrive.listeners;
 
 import com.google.api.client.googleapis.media.MediaHttpDownloader;
 import com.google.api.client.googleapis.media.MediaHttpDownloaderProgressListener;
-
-import java.io.IOException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FileDownloadProgressListener implements MediaHttpDownloaderProgressListener {
-    @Override public void progressChanged(MediaHttpDownloader downloader) throws IOException {
+    private static final Logger logger = LoggerFactory.getLogger(FileDownloadProgressListener.class);
+    @Override public void progressChanged(MediaHttpDownloader downloader) {
 
         switch (downloader.getDownloadState()) {
+            case NOT_STARTED:
+                logger.info("Não iniciado");
+                break;
             case MEDIA_IN_PROGRESS:
-                View.header2("Download is in progress: " + downloader.getProgress());
+                logger.info("Download em progresso: {}", downloader.getProgress());
                 break;
             case MEDIA_COMPLETE:
-                View.header2("Download is Complete!");
+                logger.info("Download completo!");
                 break;
         }
 
